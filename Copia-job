@@ -1,0 +1,32 @@
+(in-package :user)
+
+(defun copia-problem (problem)
+	(let ((list-aux nil))
+		(progn
+			(dolist (x (job-shop-problem-jobs problem)) (setf list-aux (append list-aux (list (copia-job x)))))
+			(make-job-shop-problem
+				:name (job-shop-problem-name problem)
+				:n.jobs (job-shop-problem-n.jobs problem)
+				:n.machines (job-shop-problem-n.machines problem)
+				:jobs list-aux)
+		)))
+	
+
+(defun copia-job (job)
+	(let ((list-aux nil))
+		(progn
+			(dolist (x (job-shop-job-tasks job)) (setf list-aux (append list-aux (list(copia-task x)))))
+			(make-job-shop-job
+				:job.nr (job-shop-job-job.nr job)
+				:tasks list-aux)
+		)))
+
+(defun copia-task (task)
+	(make-job-shop-task
+		:job.nr (job-shop-task-job.nr task)
+		:task.nr (job-shop-task-task.nr task)
+		:machine.nr (job-shop-task-machine.nr task)
+		:duration (job-shop-task-duration task)
+		:start.time (job-shop-task-start.time task)))
+
+		
