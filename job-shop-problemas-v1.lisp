@@ -23,6 +23,16 @@
   (list
    
    (make-job-shop-problem
+    :name "enunciado"
+    :n.jobs 2
+    :n.machines 2
+    :jobs (list (MAKE-JOB-SHOP-JOB :JOB.NR 0
+				   :TASKS (list (MAKE-JOB-SHOP-TASK :JOB.NR 0 :TASK.NR 0 :MACHINE.NR 1 :DURATION 12 :START.TIME NIL)
+                                                (MAKE-JOB-SHOP-TASK :JOB.NR 0 :TASK.NR 1 :MACHINE.NR 0 :DURATION 68 :START.TIME NIL)))
+                (MAKE-JOB-SHOP-JOB :JOB.NR 1
+				   :TASKS (list (MAKE-JOB-SHOP-TASK :JOB.NR 0 :TASK.NR 0 :MACHINE.NR 0 :DURATION 5 :START.TIME NIL)
+                                                (MAKE-JOB-SHOP-TASK :JOB.NR 0 :TASK.NR 1 :MACHINE.NR 1 :DURATION 5 :START.TIME NIL)))))
+   (make-job-shop-problem
     :name "mt06"
     :n.jobs 6
     :n.machines 6
