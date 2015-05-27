@@ -1,0 +1,23 @@
+(defun heuristic1 (jsp)
+	(let ((jobstime 0)
+		  (joblist (jsp-jobs jsp)))
+		(dolist (job joblist)
+			(let ((sum 0))
+				(progn
+					(dolist (task (job-shop-job-tasks job))
+						(when (null (job-shop-task-start.time task)) (setf sum (+ sum (job-shop-task-duration task)))))
+					(if (> sum jobstime) (setf jobstime sum)))))
+		jobstime))
+
+		
+
+		
+
+(defun cost (jsp)
+	(let ((highest 0)
+		  (aux 0)
+		  (machines (jsp-machines jsp)))
+		(dolist (task machines)	
+			(setf aux (+ (job-shop-task-start.time task) (job-shop-task-duration task)))
+			(if (< highest aux) (setf highest aux)))
+		highest))
